@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>余思贤 - 个人简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 自定义样式 */
+        body {
+            font-family: 'Inter', 'Helvetica Neue', 'Arial', 'sans-serif';
+            background-color: #f0f2f5;
+            color: #1a202c;
+        }
+
+        /* 导航栏动效 */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            background-color: #4a5568;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: #2d3748;
+        }
+
+        /* 页面切换动画 */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #cbd5e0;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left {
+            left: 0;
+        }
+        .timeline-container.right {
+            left: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4a5568;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 导航栏 -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-800">
+                <a href="#" onclick="showPage('home')">余思贤</a>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#" class="nav-link active" onclick="showPage('home', this)">首页</a>
+                <a href="#" class="nav-link" onclick="showPage('experience', this)">工作经历</a>
+                <a href="#" class="nav-link" onclick="showPage('chatbot', this)">AI对话</a>
+            </div>
+             <button id="mobile-menu-button" class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200" onclick="showPage('home', this); closeMobileMenu();">首页</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200" onclick="showPage('experience', this); closeMobileMenu();">工作经历</a>
+            <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200" onclick="showPage('chatbot', this); closeMobileMenu();">AI对话</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-8">
+        <!-- 首页 -->
+        <section id="home" class="page active">
+            <div class="text-center">
+                <div class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full shadow-lg bg-cover bg-center" style="background-image: url('https://placehold.co/200x200/a0aec0/ffffff?text=YSX')"></div>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800">余思贤</h1>
+                <p class="mt-2 text-lg md:text-xl text-gray-600">AI产品实习生 | 对外经济贸易大学</p>
+                <p class="mt-1 text-md text-gray-500">2026年毕业</p>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <a href="mailto:swufeysx@163.com" class="text-gray-600 hover:text-gray-800">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
+                    </a>
+                    <a href="tel:18884533342" class="text-gray-600 hover:text-gray-800">
+                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 border-b-2 pb-2">关于我</h2>
+                <p class="mt-4 text-gray-700">
+                    我是一名就读于对外经济贸易大学中国金融学院金融工程方向的研一学生，对人工智能领域，特别是大语言模型（LLM）和AIGC应用充满热情。我具备扎实的Python编程和数据分析能力，并对金融科技交叉领域有浓厚兴趣，渴望能将所学应用于AI产品创新，创造有价值的产品。
+                </p>
+            </div>
+
+            <div class="mt-8 bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 border-b-2 pb-2">专业技能</h2>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700">编程与数据分析</h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                            <li>熟悉 Python 开发, 掌握 Numpy, Pandas, Matplotlib 等库</li>
+                            <li>熟悉 MySQL 数据库操作</li>
+                            <li>擅长 Stata 分析</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700">AI模型与技术</h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                            <li>熟悉 LLM (微调, Prompt工程), RAG, NLP 等领域</li>
+                            <li>理解 GPT, DeepSeek, Claude, LLaMA 等主流大模型</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700">专业证书与资质</h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                            <li>大学英语六级</li>
+                            <li>基金从业资格证, 证券从业资格证</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工作经历 -->
+        <section id="experience" class="page">
+             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">工作与项目经历</h2>
+            <div class="timeline">
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3 class="text-xl font-bold">百度-度小满-数据智能应用部</h3>
+                        <p class="text-sm text-gray-500 mb-2">2025年4月 - 2025年6月 | AI产品战略</p>
+                        <ul class="list-disc list-inside text-gray-700">
+                            <li>调研AI排行榜、LLM动态、Agent动态，整合行业观点。</li>
+                            <li>使用AI对头部互金公司进行业务数据和宏观经济数据战略分析。</li>
+                            <li>参与设计与开发大模型效果评估方案，执行评测任务并提出优化建议。</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3 class="text-xl font-bold">中国人民银行软件开发中心</h3>
+                        <p class="text-sm text-gray-500 mb-2">2024年7月 - 2025年1月 | 新技术实验室</p>
+                        <ul class="list-disc list-inside text-gray-700">
+                            <li>辅助内审司AI大模型调用与维护，将模型准确率和召回率从75%提升至85%。</li>
+                            <li>基于Python爬虫搜集超1万条宏观相关资料与文献。</li>
+                            <li>基于Python和Eviews对美联储顶刊论文进行代码复现和修改。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3 class="text-xl font-bold">壹心壹翼科技</h3>
+                        <p class="text-sm text-gray-500 mb-2">2024年4月 - 2025年7月 | 多模态大模型算法研究助理</p>
+                        <ul class="list-disc list-inside text-gray-700">
+                            <li>基于通用大模型，结合领域数据构建行业大模型。</li>
+                            <li>针对500+保险产品合约进行修改，搭建大模型语料库。</li>
+                            <li>负责保险类垂直大模型的意图分类、多产品名称、问题提炼agent调优。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-container right">
+                    <div class="timeline-content">
+                        <h3 class="text-xl font-bold">四川省联合尼泊尔企业竞争模拟大赛</h3>
+                        <p class="text-sm text-gray-500 mb-2">2022年8月 - 12月 | 大赛组委会总负责人</p>
+                        <ul class="list-disc list-inside text-gray-700">
+                            <li>主导组织四川省企模比赛，协调10所高校合作，吸引1000+参赛者。</li>
+                            <li>负责与尼泊尔运筹学会及高校学生的跨国学术培训与合作。</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-container left">
+                    <div class="timeline-content">
+                        <h3 class="text-xl font-bold">中国家庭金融调查与研究中心</h3>
+                        <p class="text-sm text-gray-500 mb-2">2021年7月 - 12月 | 实地调研督导</p>
+                        <ul class="list-disc list-inside text-gray-700">
+                             <li>参与暑期大调查（超2000名访员），设计数据问卷。</li>
+                             <li>负责实地调查小组培训，主导小组市场调研与数据收集。</li>
+                             <li>质量核查收集问卷，分析反馈有价值的数据报告。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI对话 -->
+        <section id="chatbot" class="page">
+             <div class="bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg" style="height: 80vh;">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6">与我的AI助手对话</h2>
+                <iframe
+                    src="http://127.0.0.1/chatbot/A97SqTBHxOwjxTpU"
+                    style="width: 100%; height: calc(100% - 80px); min-height: 600px; border-radius: 8px;"
+                    frameborder="0"
+                    allow="microphone">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function showPage(pageId, element) {
+            // 隐藏所有页面
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // 显示目标页面
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // 更新桌面导航栏链接的 'active' 类
+            document.querySelectorAll('header .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            if (element) {
+                 element.classList.add('active');
+            } else {
+                // 如果是通过logo点击等方式切换，手动给首页加上active
+                if(pageId === 'home') {
+                    document.querySelector('header .nav-link').classList.add('active');
+                }
+            }
+        }
+
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        function closeMobileMenu() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        // 默认显示首页
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home', document.querySelector('.nav-link'));
+        });
+    </script>
+</body>
+</html>
